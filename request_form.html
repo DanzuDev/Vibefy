@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Lagu - Vibefy</title>
+    <link rel="stylesheet" href="request_form.css">
+    <script defer src="request_form.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Request Lagu</h2>
+    <p>isi Form Dibawah untuk menambahkan lagu yang kamu inginkan!</p>
+    <form id="requestForm" action="https://formspree.io/f/xpwppwqp" method="POST">
+        <label for="songTitle">Judul Lagu / Link :</label>
+        <input type="text" id="songTitle" name="Judul_Lagu" required>
+        
+        <label for="username">Nama Kamu :</label>
+        <input type="text" id="username" name="Nama_Pengguna" required>
+        
+        <label for="message">Pesan untuk Developer :</label>
+        <textarea id="message" name="Pesan" rows="4"></textarea>
+        
+        <button type="submit" id="requestButton">Kirim</button>
+    </form>
+    <p id="successMessage" style="display: none; color: green;">Request berhasil dikirim! Kamu akan dialihkan...</p>
+    <p id="cooldownMessage" style="display: none; color: red;">Kamu harus menunggu 15 menit sebelum request lagi.</p>
+</div>
+
+</body>
+</html>

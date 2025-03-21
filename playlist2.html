@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibefy - Playlist 1</title>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles2.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<a href="request_form.html" class="request-button">🎵 Request Lagu</a>
+
+    <div class="container">
+        <!-- Tambahkan Judul Website -->
+        <h1 class="site-title">Vibefy</h1>
+
+        <h2>Playlist 2</h2>
+
+        <div class="visualizer">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        
+        <audio id="audioPlayer" controls style="display: none;"></audio>
+
+        <div class="player">
+            <button id="playStopBtn">▶</button>
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <ul id="playlist"></ul>
+<div class="controls">
+    <button onclick="changePage('index.html')" class="prev">❮</button>
+    <button onclick="changePage('Request.html')" class="next">❯</button>
+</div>
+    </div>
+
+<footer>
+    <p>&copy; 2025 Vibefy. All rights reserved.</p>
+</footer>
+
+    <script>
+        const songs = [
+            { title: "Bad Liar", url: "https://files.catbox.moe/zep7m0.mp3" },
+            { title: "Love is Gone", url: "https://files.catbox.moe/rie5kz.mp3" },
+            { title: "Run Away", url: "https://files.catbox.moe/7wl70w.mp3" },
+            { title: "Let me down slowly", url: "https://files.catbox.moe/luy3jj.mp3" },
+            { title: "Perfect", url: "https://files.catbox.moe/umfl94.mp3" },
+            { title: "Until i found you", url: "https://files.catbox.moe/q3bzj3.mp3" },
+            { title: "Thunder", url: "https://files.catbox.moe/2c5a82.mp3" },
+        ];
+    </script>
+</body>
+</html>

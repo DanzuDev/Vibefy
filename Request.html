@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibefy - Playlist 1</title>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="Custom.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<a href="request_form.html" class="request-button">🎵 Request Lagu</a>
+
+    <div class="container">
+        <!-- Tambahkan Judul Website -->
+        <h1 class="site-title">Vibefy</h1>
+
+        <h2>Playlist Request</h2>
+
+        <div class="visualizer">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        
+        <audio id="audioPlayer" controls style="display: none;"></audio>
+
+        <div class="player">
+            <button id="playStopBtn">▶</button>
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <ul id="playlist"></ul>
+<div class="controls">
+    <button onclick="changePage('playlist2.html')" class="prev">❮</button>
+</div>
+    </div>
+
+<footer>
+    <p>&copy; 2025 Vibefy. All rights reserved.</p>
+</footer>
+
+    <script>
+        const songs = [
+            { title: "Kosong", url: "https://kosong.com" },
+            { title: "Kosong", url: "https://files.catbox.moe/309qi7.mp3" },
+            { title: "Kosong", url: "https://example.com/songC.mp3" },
+            { title: "Kosong", url: "https://example.com/songD.mp3" },
+            { title: "Kosong", url: "https://example.com/songE.mp3" },
+            { title: "Kosong", url: "https://example.com/songF.mp3" },
+            { title: "Kosong", url: "https://example.com/songG.mp3" },
+            { title: "Kosong", url: "https://example.com/songH.mp3" }
+        ];
+    </script>
+</body>
+</html>

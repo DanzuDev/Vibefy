@@ -1,0 +1,139 @@
+/* Ganti dengan URL atau path gambar yang kamu inginkan */
+body {
+    font-family: 'Oswald', sans-serif;
+    background: url('https://files.catbox.moe/m4psxi.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Styling untuk form */
+.form-container {
+    background: rgba(255, 255, 255, 0.2); /* Warna putih dengan transparansi 20% */
+    backdrop-filter: blur(10px); /* Efek blur agar lebih estetik */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+}
+
+/* Container utama */
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+/* Import font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+/* Styling untuk judul "Request Lagu" */
+h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;  /* Ukuran besar */
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+/* Judul */
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Deskripsi */
+p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Formulir */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Label */
+label {
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* Input & Textarea */
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Fokus pada input */
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Tombol Submit */
+button {
+    margin-top: 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Pesan sukses */
+#successMessage {
+    display: none;
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Efek Fade In */
+body {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
