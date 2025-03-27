@@ -5,65 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibefy - Playlist 1</title>
     
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles.css">
+
     <script defer src="script.js"></script>
 </head>
 <body>
-  
+
 <a href="request_form.html" class="request-button">🎵 Request Lagu</a>
 
-    <div class="container">
-        <!-- Tambahkan Judul Website -->
-        <h1 class="site-title">Vibefy</h1>
+<div class="container">
+    <h1 class="site-title">Vibefy</h1>
+    <h2>Playlist 1</h2>
 
-        <h2>Playlist 1</h2>
+    <div class="visualizer">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    
+    <audio id="audioPlayer" controls style="display: none;"></audio>
 
-        <div class="visualizer">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        
-        <audio id="audioPlayer" controls style="display: none;"></audio>
-
-        <div class="player">
-            <button id="playStopBtn">▶</button>
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-        
-        <ul id="playlist"></ul>
-
-        <div class="controls">
-            <button onclick="changePage('playlist2.html')">❯</button>
+    <div class="player">
+        <button id="playStopBtn">▶</button>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
     </div>
+    
+    <ul id="playlist"></ul>
+
+    <div class="controls">
+        <button onclick="changePage('playlist2.html')">❯</button>
+    </div>
+</div>
 
 <footer>
-    <div class="creator-info">
-    <p>Website ini dibuat oleh <span class="creator-name">Danu</span>.</p>
-    </div>
     <p>&copy; 2025 Vibefy. All rights reserved.</p>
 </footer>
 
-    <script>
-        const songs = [
-            { title: "Death Bed", url: "https://files.catbox.moe/spadk5.mp3" },
-            { title: "Lovely", url: "https://files.catbox.moe/jqipfc.mp3" },
-            { title: "Love Nwantiti", url: "https://files.catbox.moe/si03pj.mp3" },
-            { title: "Before You Go", url: "https://files.catbox.moe/ebjv8q.mp3" },
-            { title: "A Thousand Years", url: "https://files.catbox.moe/9hkpt8.mp3" },
-            { title: "Demons", url: "https://files.catbox.moe/hof35n.mp4" },
-            { title: "Bones", url: "https://files.catbox.moe/cs54cg.mp3" },
-        ];
-    </script>
+<script>
+    const songs = [
+        { title: "Death Bed", url: "https://files.catbox.moe/spadk5.mp3", addedAt: "2025-03-25" },
+        { title: "Lovely", url: "https://files.catbox.moe/jqipfc.mp3", addedAt: "2025-03-26" },
+        { title: "Love Nwantiti", url: "https://files.catbox.moe/si03pj.mp3", addedAt: "2025-03-27" },
+        { title: "Before You Go", url: "https://files.catbox.moe/ebjv8q.mp3", addedAt: "2025-03-28" },
+        { title: "A Thousand Years", url: "https://files.catbox.moe/9hkpt8.mp3", addedAt: "2025-03-29" },
+        { title: "Demons", url: "https://files.catbox.moe/hof35n.mp4", addedAt: "2025-03-30" },
+        { title: "Bones", url: "https://files.catbox.moe/cs54cg.mp3", addedAt: "2025-03-30" },
+    ];
+
+    function isNewSong(addedAt) {
+        const today = new Date();
+        const addedDate = new Date(addedAt);
+        const difference = Math.floor((today - addedDate) / (1000 * 60 * 60 * 24));
+        return difference <= 3; // Jika belum 3 hari, dianggap "New"
+    }
+
+    function loadPlaylist() {
+        const playlistElement = document.getElementById("playlist");
+        playlistElement.innerHTML = "";
+
+        songs.forEach(song => {
+            const li = document.createElement("li");
+            li.innerHTML = `${song.title} ${isNewSong(song.addedAt) ? '<span class="new-label">New</span>' : ''}`;
+            playlistElement.appendChild(li);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadPlaylist);
+</script>
+
 </body>
 </html>
