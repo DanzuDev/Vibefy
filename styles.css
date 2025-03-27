@@ -348,3 +348,19 @@ footer {
     width: 100%;
     backdrop-filter: blur(5px); /* Efek blur agar lebih estetik */
 }
+
+.creator-info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Winky Sans', sans-serif;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.creator-name {
+    font-weight: bold;
+    color: #ff9800; /* Warna oranye untuk menonjolkan nama */
+}
