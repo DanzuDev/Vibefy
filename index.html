@@ -46,20 +46,20 @@
 
 <script>
     const songs = [
-        { title: "Death Bed", url: "https://files.catbox.moe/spadk5.mp3", addedAt: "2025-03-25" },
-        { title: "Lovely", url: "https://files.catbox.moe/jqipfc.mp3", addedAt: "2025-03-26" },
-        { title: "Love Nwantiti", url: "https://files.catbox.moe/si03pj.mp3", addedAt: "2025-03-27" },
-        { title: "Before You Go", url: "https://files.catbox.moe/ebjv8q.mp3", addedAt: "2025-03-28" },
-        { title: "A Thousand Years", url: "https://files.catbox.moe/9hkpt8.mp3", addedAt: "2025-03-29" },
-        { title: "Demons", url: "https://files.catbox.moe/hof35n.mp4", addedAt: "2025-03-30" },
-        { title: "Bones", url: "https://files.catbox.moe/cs54cg.mp3", addedAt: "2025-03-30" },
+        { title: "Death Bed", url: "https://files.catbox.moe/spadk5.mp3", addedAt: "2025-03-25", label: "Hot" },
+        { title: "Lovely", url: "https://files.catbox.moe/jqipfc.mp3", addedAt: "2025-03-26", label: "Trending" },
+        { title: "Love Nwantiti", url: "https://files.catbox.moe/si03pj.mp3", addedAt: "2025-03-27", label: "Viral" },
+        { title: "Before You Go", url: "https://files.catbox.moe/ebjv8q.mp3", addedAt: "2025-03-28", label: "New" },
+        { title: "A Thousand Years", url: "https://files.catbox.moe/9hkpt8.mp3", addedAt: "2025-03-29", label: "" },
+        { title: "Demons", url: "https://files.catbox.moe/hof35n.mp4", addedAt: "2025-03-30", label: "Fresh" },
+        { title: "Bones", url: "https://files.catbox.moe/cs54cg.mp3", addedAt: "2025-03-30", label: "" },
     ];
 
-    function isNewSong(addedAt) {
+    function shouldShowLabel(addedAt) {
         const today = new Date();
         const addedDate = new Date(addedAt);
         const difference = Math.floor((today - addedDate) / (1000 * 60 * 60 * 24));
-        return difference <= 3; // Jika belum 3 hari, dianggap "New"
+        return difference <= 3; // Label akan muncul selama 3 hari
     }
 
     function loadPlaylist() {
@@ -68,7 +68,11 @@
 
         songs.forEach(song => {
             const li = document.createElement("li");
-            li.innerHTML = `${song.title} ${isNewSong(song.addedAt) ? '<span class="new-label">New</span>' : ''}`;
+            if (song.label && shouldShowLabel(song.addedAt)) {
+                li.innerHTML = `${song.title} <span class="custom-label">${song.label}</span>`;
+            } else {
+                li.textContent = song.title;
+            }
             playlistElement.appendChild(li);
         });
     }
