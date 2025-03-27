@@ -364,3 +364,13 @@ footer {
     font-weight: bold;
     color: #ff9800; /* Warna oranye untuk menonjolkan nama */
 }
+
+.new-label {
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 5px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
