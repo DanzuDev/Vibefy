@@ -1,53 +1,49 @@
-const express = require("express");
-const admin = require("firebase-admin");
-const cors = require("cors");
+const express = require('express');
+const admin = require('firebase-admin');
+const cors = require('cors');
+const path = require('path');
 
+// Inisialisasi Express
 const app = express();
+const port = process.env.PORT || 3000;
+
+// Enable CORS untuk akses dari frontend
 app.use(cors());
-app.use(express.json());
 
 // Inisialisasi Firebase
-const serviceAccount = require("./service-account.json"); // Jangan upload file ini ke GitHub
+const serviceAccount = require('./service-account.json'); // Lokasi file service-account.json
+
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://vibefy-690f0-default-rtdb.asia-southeast1.firebasedatabase.app/" // Ganti dengan URL Firebase milikmu
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://vibefy-690f0-default-rtdb.asia-southeast1.firebasedatabase.app/"
 });
+
 const db = admin.database();
+const leaderboardRef = db.ref('leaderboard');
 
-// API untuk mendapatkan leaderboard
-app.get("/api/leaderboard", async (req, res) => {
-    try {
-        const snapshot = await db.ref("/leaderboard").orderByChild("listens").limitToLast(10).once("value");
-        const leaderboard = snapshot.val();
-        res.json(leaderboard);
-    } catch (error) {
-        res.status(500).send(error.message);
+// Endpoint untuk mengambil data leaderboard
+app.get('/api/leaderboard', (req, res) => {
+  leaderboardRef.orderByChild('score').limitToLast(10).once('value', (snapshot) => {
+    const leaderboardData = snapshot.val();
+    const leaderboardArray = [];
+
+    for (let id in leaderboardData) {
+      leaderboardArray.push({
+        id,
+        ...leaderboardData[id]
+      });
     }
+
+    res.json(leaderboardArray.reverse());
+  });
 });
 
-// API untuk update jumlah pemutaran lagu
-app.post("/api/track", async (req, res) => {
-    const { userId, userName } = req.body;
-
-    try {
-        const ref = db.ref("/leaderboard").child(userId);
-        const snapshot = await ref.once("value");
-        let listens = snapshot.val() ? snapshot.val().listens : 0;
-        listens++;
-
-        await ref.set({
-            userName,
-            listens
-        });
-
-        res.status(200).send("Updated successfully!");
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// Menyajikan halaman leaderboard (frontend) jika mengakses /leaderboard
+app.get('/leaderboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/leaderboard.html'));
 });
 
-// Menjalankan server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// Menjalankan server Express
+app.listen(port, () => {
+  console.log(`Server berjalan di http://localhost:${port}`);
 });
