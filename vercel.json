@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/leaderboard",
+      "dest": "/frontend/leaderboard.html"
+    },
+    {
+      "src": "/api/leaderboard",
+      "dest": "/backend/server.js"
+    }
+  ]
+}
