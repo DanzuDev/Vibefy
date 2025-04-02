@@ -1,0 +1,21 @@
+# Node modules
+/node_modules/
+
+# File build hasil dari Vercel
+/.vercel/
+
+# Firebase service account credentials (jangan upload file ini ke GitHub)
+backend/service-account.json
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Optional: jika menggunakan npm package-lock.json
+package-lock.json
